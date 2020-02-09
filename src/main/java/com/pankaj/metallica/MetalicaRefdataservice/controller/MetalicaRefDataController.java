@@ -29,7 +29,7 @@ public class MetalicaRefDataController {
 		long locationId = Long.parseLong(location);
 		System.out.println(locationId);
 	
-		return locationService.findLocationbyId(locationId);
+		return locationService.findById(locationId).get();
 		
 	}
 
