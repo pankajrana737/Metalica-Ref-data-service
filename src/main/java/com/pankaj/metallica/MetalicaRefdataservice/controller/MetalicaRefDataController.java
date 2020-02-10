@@ -22,15 +22,32 @@ public class MetalicaRefDataController {
 	@Autowired
 	ComodityRepository comodityService;
 	@Autowired
-	CounterPartyRepository CounterPartService;
+	CounterPartyRepository counterPartService;
 	
 	@GetMapping("/ref-data-service")
 	public LocationBean getLocation(@RequestParam String location) {
-		long locationId = Long.parseLong(location);
-		System.out.println(locationId);
 	
-		return locationService.findById(locationId).get();
-		
+		try {
+			LocationBean locationBean = locationService.findById(Long.parseLong(location)).get();
+
+			return locationBean;
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@GetMapping("/ref-comodity-service")
+	public ComodityBean getCommodity(@RequestParam String comodityId) {
+		Optional<ComodityBean> findById = comodityService.findById(Long.parseLong(comodityId));
+		return findById.get();
+	}
+	@GetMapping("/ref-countParty")
+	public CounterPartyBean getCounterParty(@RequestParam String partyId) {
+		Optional<CounterPartyBean> findById = counterPartService.findById(partyId.toUpperCase());
+		return findById.get();
 	}
 
 }

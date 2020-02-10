@@ -9,6 +9,27 @@ public class CounterPartyBean {
 	private String counterPartyID;
 	
 	private String counterPartyName;
+
+	public String getCounterPartyID() {
+		return counterPartyID;
+	}
+
+	public void setCounterPartyID(String counterPartyID) {
+		this.counterPartyID = counterPartyID;
+	}
+
+	public String getCounterPartyName() {
+		return counterPartyName;
+	}
+
+	public void setCounterPartyName(String counterPartyName) {
+		this.counterPartyName = counterPartyName;
+	}
+
+	@Override
+	public String toString() {
+		return "CounterPartyBean [counterPartyID=" + counterPartyID + ", counterPartyName=" + counterPartyName + "]";
+	}
 	
 	
 
